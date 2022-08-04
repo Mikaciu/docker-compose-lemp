@@ -26,22 +26,18 @@ services:
         container_name: LEMP_mariaDB
         volumes:
             - ./database:/var/lib/mysql:rw
-        ports:
-            - "3306:3306"
         depends_on:
             - nginx
         environment:
             - MYSQL_ROOT_PASSWORD=654321          
         networks:
-            - LEMP    
+            - LEMP
 
     php:
         image: chialab/php:7.4-fpm
         container_name: LEMP_php
         volumes:
             - ./www:/code
-        ports:
-            - "9000:9000"       
         networks:
             - LEMP
 
