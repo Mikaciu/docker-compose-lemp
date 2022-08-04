@@ -1,5 +1,5 @@
 # LEMP stack
-a simple LEMP using the *Offical* Docker Repository for Alpine Linux, Nginx, MariaDB, PHP and phpMyAdmin
+a simple LEMP using the *Official* Docker Repository for Alpine Linux, Nginx, MariaDB and phpMyAdmin. PHP uses chialab's version which includes all extensions.
 
 ### for start LEMP: 
 ``docker-compose up -d``
