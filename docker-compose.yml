@@ -28,8 +28,8 @@ services:
             - ./database:/var/lib/mysql:rw
         depends_on:
             - nginx
-        environment:
-            - MYSQL_ROOT_PASSWORD=654321          
+        env_file:
+            - ./.mysql.env
         networks:
             - LEMP
 
@@ -46,7 +46,7 @@ services:
         container_name: LEMP_phpMyAdmin
         ports:
             - "8183:80"
-        environment:        
+        environment:
             PMA_ARBITRARY: 1
         depends_on:
             - mariaDB
