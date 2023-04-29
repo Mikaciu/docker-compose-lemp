@@ -20,9 +20,10 @@ services:
             - php
         networks:
             - LEMP
+        restart: on-failure
 
     mariaDB:
-        image: mariadb:latest
+        image: mariadb:10.10
         container_name: LEMP_mariaDB
         volumes:
             - ./database:/var/lib/mysql:rw
@@ -32,6 +33,7 @@ services:
             - ./.mysql.env
         networks:
             - LEMP
+        restart: on-failure
 
     php:
         image: chialab/php:7.4-fpm
@@ -40,15 +42,17 @@ services:
             - ./www:/code
         networks:
             - LEMP
+        restart: on-failure
 
     phpmyadmin:
-        image: phpmyadmin/phpmyadmin
+        image: phpmyadmin:latest
         container_name: LEMP_phpMyAdmin
         ports:
             - "8183:80"
         environment:
-            PMA_ARBITRARY: 1
+            PMA_HOST: LEMP_mariaDB
         depends_on:
             - mariaDB
         networks:
             - LEMP
+        restart: on-failure
